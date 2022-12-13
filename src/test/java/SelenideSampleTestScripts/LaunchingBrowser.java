@@ -1,6 +1,7 @@
 package SelenideSampleTestScripts;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -21,6 +22,19 @@ public class LaunchingBrowser {
 
         String title = title();
         Assert.assertEquals(title, "The Internet");
+    }
+
+
+    @Test
+    public void googleSearch() {
+        open("https://www.google.com/");
+    
+        $(By.cssSelector("input[title='Search']")).setValue("Selenide"); 
+        $(By.cssSelector("input[title='Search']")).sendKeys(Keys.ENTER);
+        
+
+        String title = title();
+        Assert.assertEquals(title, "Selenide - Google Search");
     }
 
 }
